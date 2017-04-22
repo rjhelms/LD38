@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 50961400462760700}
   - component: {fileID: 114632370062980332}
   - component: {fileID: 60663464083930532}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: bacteria
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ MonoBehaviour:
   Logging: 0
   ScaleTowardCentre: 0.5
   MovementForce: 5
-  TurnForce: 1
+  TurnForce: 5
   NearbyMaxDistance: 50
   TimeBetweenPulses: 0.5
   MyTribe: {fileID: 0}

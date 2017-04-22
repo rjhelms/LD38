@@ -34,3 +34,9 @@ bacteria
 		energy
 			ticks down whenever they move
 			ticks up when they move
+
+movement algorithm:
+	- identify target direction
+	- turn towards target direction
+	- on pulse, pulse in facing direction
+	
