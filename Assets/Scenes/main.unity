@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 752312139}
   - component: {fileID: 752312138}
   - component: {fileID: 752312137}
+  - component: {fileID: 752312142}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -197,6 +198,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &752312142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 752312136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a1d7fd92cc689b4c811884bdac20506, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 1524077948}
+  ForecastMultiplier: 1
+  LerpFactor: 0.1
+  TargetY: 96
+  TargetZ: -10
 --- !u!1 &1524077946
 GameObject:
   m_ObjectHideFlags: 0
