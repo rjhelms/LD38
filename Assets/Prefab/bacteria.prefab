@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212907115801591076}
   - component: {fileID: 50961400462760700}
   - component: {fileID: 114632370062980332}
-  - component: {fileID: 60663464083930532}
+  - component: {fileID: 58091234257815800}
   m_Layer: 8
   m_Name: bacteria
   m_TagString: Untagged
@@ -63,8 +63,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &60663464083930532
-PolygonCollider2D:
+--- !u!58 &58091234257815800
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -76,23 +76,8 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 32, y: 32}
-    newSize: {x: 32, y: 32}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -16, y: 10}
-      - {x: -16, y: -10}
-      - {x: -6, y: -10}
-      - {x: 16, y: -3}
-      - {x: 16, y: 3}
-      - {x: -7, y: 10}
+  serializedVersion: 2
+  m_Radius: 8
 --- !u!114 &114632370062980332
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -110,6 +95,7 @@ MonoBehaviour:
   TurnForce: 5
   NearbyMaxDistance: 50
   TimeBetweenPulses: 0.5
+  ReturnToCenterRadius: 300
   MyTribe: {fileID: 0}
 --- !u!212 &212907115801591076
 SpriteRenderer:

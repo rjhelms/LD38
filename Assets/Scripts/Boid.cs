@@ -10,6 +10,8 @@ public class Boid : MonoBehaviour {
     public float TurnForce = 1f;
     public float NearbyMaxDistance = 20f;
     public float TimeBetweenPulses = 0.5f;
+    public float ReturnToCenterRadius = 300f;
+
     public Tribe MyTribe;
 
     private Rigidbody2D my_rigidbody;
@@ -21,6 +23,7 @@ public class Boid : MonoBehaviour {
         my_rigidbody = GetComponent<Rigidbody2D>();
         MyTribe.Members.Add(this);
         transform.position = new Vector2(Random.Range(-100f, 100f), Random.Range(-100f, 100f));
+        my_rigidbody.MoveRotation(Random.Range(0, 360));
         nextPulse = Time.fixedTime + Random.Range(0, TimeBetweenPulses);
 	}
 	
@@ -38,6 +41,7 @@ public class Boid : MonoBehaviour {
             movement_vector += TowardCentre();
             movement_vector += Avoid(nearby_boids);
             movement_vector += Align(nearby_boids);
+            movement_vector += TowardWorldCentre();
 
             float sign = Mathf.Sign(my_rigidbody.velocity.x * movement_vector.x - my_rigidbody.velocity.y * movement_vector.x);
             float target_angle = Vector2.Angle(my_rigidbody.velocity, movement_vector) * sign;
@@ -102,6 +106,20 @@ public class Boid : MonoBehaviour {
             }
             align_vector /= to_align.Count;
             return align_vector;
+        } else
+        {
+            return Vector2.zero;
+        }
+    }
+
+    private Vector2 TowardWorldCentre()
+    {
+        float distance_from_centre = ((Vector2)transform.position).magnitude;
+        if (distance_from_centre > ReturnToCenterRadius)
+        {
+            Vector2 to_world_centre = -(Vector2)transform.position;
+            Debug.Log(string.Format("{0} coming home", this));
+            return to_world_centre;
         } else
         {
             return Vector2.zero;
