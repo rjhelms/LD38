@@ -8,7 +8,8 @@ public class Tribe : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+        Members = new List<Boid>();
+        Debug.Log(Members.Count);
 	}
 	
 	// Update is called once per frame
@@ -30,15 +31,20 @@ public class Tribe : MonoBehaviour {
         return average_position;
     }
 
-    public List<Boid> GetNearbyBoids(Vector2 position, float max_distance)
+    public List<Boid> GetNearbyBoids(Boid target, float max_distance)
     {
         List<Boid> nearby_boids = new List<Boid>();
+        Debug.Log(Members.Count);
         foreach (Boid boid in Members)
         {
-            Vector2 position_difference = (Vector2)boid.transform.position - position;
-            if (position_difference.magnitude < max_distance)
+            if (boid != target)
             {
-                nearby_boids.Add(boid);
+                Debug.Log(boid);
+                Vector2 position_difference = (Vector2)boid.transform.position - (Vector2)target.transform.position;
+                if (position_difference.magnitude < max_distance)
+                {
+                    nearby_boids.Add(boid);
+                }
             }
         }
         return nearby_boids;
