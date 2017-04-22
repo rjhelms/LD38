@@ -25,18 +25,17 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Collider2D grounded = Physics2D.OverlapCircle(transform.position, PlayerRadius, GroundLayerMask);
+        GetComponent<Rigidbody2D>().AddForce(new Vector2(Input.GetAxis("Horizontal") * MoveForce, 0));
 
         if (grounded)
         {
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(Input.GetAxis("Horizontal") * MoveForce, 0));
+
             if (Input.GetButton("Fire1"))
             {
                 Debug.Log("Jumping!");
                 GetComponent<Rigidbody2D>().AddForce(new Vector2(0, JumpForce), ForceMode2D.Impulse);
             }
-        } else
-        {
-            if (Input.GetButton("Fire1"))
+            else
             {
                 Debug.Log("Can't jump");
             }
