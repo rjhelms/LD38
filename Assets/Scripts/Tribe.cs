@@ -34,12 +34,10 @@ public class Tribe : MonoBehaviour {
     public List<Boid> GetNearbyBoids(Boid target, float max_distance)
     {
         List<Boid> nearby_boids = new List<Boid>();
-        Debug.Log(Members.Count);
         foreach (Boid boid in Members)
         {
             if (boid != target)
             {
-                Debug.Log(boid);
                 Vector2 position_difference = (Vector2)boid.transform.position - (Vector2)target.transform.position;
                 if (position_difference.magnitude < max_distance)
                 {

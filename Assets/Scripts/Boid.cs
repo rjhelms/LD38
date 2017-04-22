@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Boid : MonoBehaviour {
 
+    public bool Logging = false;
     public float ScaleTowardCentre = 0.01f;
     public float MovementForce = 1f;
+    public float TurnForce = 1f;
     public float NearbyMaxDistance = 20f;
     public float TimeBetweenPulses = 0.5f;
     public Tribe MyTribe;
@@ -34,22 +36,33 @@ public class Boid : MonoBehaviour {
             Vector2 movement_vector = new Vector2();
             List<Boid> nearby_boids = MyTribe.GetNearbyBoids(this, NearbyMaxDistance);
             movement_vector += TowardCentre();
-            Debug.Log(movement_vector);
             movement_vector += Avoid(nearby_boids);
-            Debug.Log(movement_vector);
             movement_vector += Align(nearby_boids);
-            Debug.Log(movement_vector);
 
-            movement_vector.Normalize();
+            float sign = Mathf.Sign(my_rigidbody.velocity.x * movement_vector.x - my_rigidbody.velocity.y * movement_vector.x);
+            float target_angle = Vector2.Angle(my_rigidbody.velocity, movement_vector) * sign;
+            if (Logging)
+                Debug.Log(string.Format("{0}: {1}", this, target_angle));
 
-            Vector2 movement_force = movement_vector * MovementForce;
-            my_rigidbody.AddForce(movement_force);
-
-            float angle = Mathf.Atan2(movement_force.y, movement_force.x) * Mathf.Rad2Deg;
-            target_rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            my_rigidbody.AddRelativeForce(Vector2.right * MovementForce, ForceMode2D.Impulse);
+            if (target_angle > 0)
+                my_rigidbody.AddTorque(TurnForce, ForceMode2D.Impulse);
+            if (target_angle < 0)
+                my_rigidbody.AddTorque(-TurnForce, ForceMode2D.Impulse);
             nextPulse += TimeBetweenPulses;
         }
-        transform.rotation = Quaternion.Lerp(transform.rotation, target_rotation, 0.1f);
+
+
+
+        //movement_vector.Normalize();
+        //my_rigidbody.
+        //Vector2 movement_force = movement_vector * MovementForce;
+
+        //float angle = Mathf.Atan2(movement_force.y, movement_force.x) * Mathf.Rad2Deg;
+        //target_rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        //nextPulse += TimeBetweenPulses;
+
+        //transform.rotation = Quaternion.Lerp(transform.rotation, target_rotation, 0.1f);
     }
 
     private Vector2 TowardCentre()
@@ -87,8 +100,6 @@ public class Boid : MonoBehaviour {
             {
                 align_vector += boid.GetComponent<Rigidbody2D>().velocity;
             }
-            Debug.Log(align_vector);
-            Debug.Log(to_align.Count);
             align_vector /= to_align.Count;
             return align_vector;
         } else
