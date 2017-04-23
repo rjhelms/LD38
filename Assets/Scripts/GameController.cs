@@ -83,6 +83,12 @@ public class GameController : MonoBehaviour {
                 nextFlashTime = Time.fixedTime + HitFlashTime;
             }
         }
+
+        if (!HitRecovery)
+        {
+            Player.GetComponent<SpriteRenderer>().enabled = true;
+        }
+
         if (State == GameState.RUNNING)
         {
             if (Player.transform.position.y < -32)
