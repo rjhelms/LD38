@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public GameController gameController;
-
-
+    private GameController gameController;
+    
     // Use this for initialization
     void Awake()
     {
