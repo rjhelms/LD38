@@ -334,7 +334,7 @@ MonoBehaviour:
   HitRecovery: 0
   HitRecoverTime: 2
   HitFlashTime: 0.1
-  LevelClear: {fileID: 8300000, guid: 0a0f60946af86c54d85b230ffd5e373a, type: 3}
+  LevelClearSound: {fileID: 8300000, guid: 0a0f60946af86c54d85b230ffd5e373a, type: 3}
 --- !u!4 &890754759
 Transform:
   m_ObjectHideFlags: 0
