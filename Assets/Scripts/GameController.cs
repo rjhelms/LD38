@@ -46,6 +46,12 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        // debug level advance
+        if (Input.GetKeyDown(KeyCode.KeypadPlus))
+        {
+            ScoreManager.Instance.Level++;
+            UnityEngine.SceneManagement.SceneManager.LoadScene("main");
+        }
         if (ScoreManager.Instance.Score > ScoreManager.Instance.NextNewLifeScore)
         {
             ScoreManager.Instance.Lives++;
