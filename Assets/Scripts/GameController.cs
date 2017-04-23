@@ -79,8 +79,15 @@ public class GameController : MonoBehaviour {
             if (!AudioPlayer.isPlaying)
             {
                 ScoreManager.Instance.Lives--;
-                ScoreManager.Instance.HitPoints = ScoreManager.Instance.MaxHitPoints;
-                UnityEngine.SceneManagement.SceneManager.LoadScene("main");
+                if (ScoreManager.Instance.Lives >= 0)
+                {
+                    ScoreManager.Instance.HitPoints = ScoreManager.Instance.MaxHitPoints;
+                    UnityEngine.SceneManagement.SceneManager.LoadScene("main");
+                } else
+                {
+                    Debug.Log("Game over!");
+                    Time.timeScale = 0;
+                }
             }
         }
     }
