@@ -9,7 +9,9 @@ trying to navigate across levels - ideally fast paced!
 lots of blind leaps
 
 enemies:
-	terrain
+	terrain - the classic falling in pits
 	falling objects
 	trees, pollen
 	people sneezing
+
+levels - 11 rows high
