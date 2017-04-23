@@ -88,7 +88,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 1
   m_AngularDrag: 0
-  m_GravityScale: 32
+  m_GravityScale: 64
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -124,7 +124,7 @@ MonoBehaviour:
   SneezeCheckTime: 1
   SneezeChance: 0.2
   SneezePauseTime: 1
-  WalkVector: {x: 150, y: 0}
+  WalkVector: {x: 275, y: 0}
   GroundLayerMask:
     serializedVersion: 2
     m_Bits: 256
