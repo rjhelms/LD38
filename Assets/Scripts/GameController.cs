@@ -17,7 +17,6 @@ public class GameController : MonoBehaviour {
     public bool HitRecovery = false;
     public float HitRecoverTime = 1f;
     public float HitFlashTime = 0.2f;
-
     public bool PlayerGrounded;
 
     public AudioClip LevelClearSound;
@@ -29,6 +28,7 @@ public class GameController : MonoBehaviour {
 
     public Image HealthImage;
     public int HealthImageScaleFactor = 32;
+    public Text ScoreText;
 
     private float nextFlashTime;
     private float endRecoverTime;
@@ -43,6 +43,7 @@ public class GameController : MonoBehaviour {
 		if (State == GameState.RUNNING)
         {
             HealthImage.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, ScoreManager.Instance.HitPoints * HealthImageScaleFactor);
+            ScoreText.text = string.Format("LIVES: {0}\r\nLEVEL: {1}", ScoreManager.Instance.Lives, ScoreManager.Instance.Level);
         }
 	}
 

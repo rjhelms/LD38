@@ -18,6 +18,7 @@ public class Bird : MonoBehaviour {
     private float nextPoop;
     private float nextTurnAround;
     private Transform projectileParent;
+
     // Use this for initialization
     void Start () {
         gameController = FindObjectOfType<GameController>();
