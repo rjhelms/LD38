@@ -13,6 +13,13 @@ public class GameController : MonoBehaviour {
     public float PlayerRadius = 40f;
     public LayerMask GroundLayerMask;
     public GameState State;
+    public int HitPoints = 3;
+    public bool HitRecovery = false;
+    public float HitRecoverTime = 1f;
+    public float HitFlashTime = 0.2f;
+
+    private float nextFlashTime;
+    private float endRecoverTime;
 
     // Use this for initialization
     void Start () {
@@ -26,6 +33,19 @@ public class GameController : MonoBehaviour {
 
     void FixedUpdate()
     {
+        if (HitRecovery)
+        {
+            if (Time.fixedTime > endRecoverTime)
+            {
+                HitRecovery = false;
+                Player.GetComponent<SpriteRenderer>().enabled = true;
+            }
+            if (Time.fixedTime > nextFlashTime)
+            {
+                Player.GetComponent<SpriteRenderer>().enabled = !Player.GetComponent<SpriteRenderer>().enabled;
+                nextFlashTime = Time.fixedTime + HitFlashTime;
+            }
+        }
         if (State == GameState.RUNNING)
         {
             Collider2D grounded = Physics2D.OverlapCircle(Player.transform.position, PlayerRadius, GroundLayerMask);
@@ -53,5 +73,24 @@ public class GameController : MonoBehaviour {
     {
         State = GameState.WIN;
         Debug.Log("You win!");
+    }
+
+    public void Hit()
+    {
+        if (!HitRecovery)
+        {
+            HitPoints--;
+            if (HitPoints >= 0)
+            {
+                Debug.Log(string.Format("Ouch! {0} hit points left", HitPoints));
+                HitRecovery = true;
+                nextFlashTime = Time.fixedTime + HitFlashTime;
+                endRecoverTime = Time.fixedTime + HitRecoverTime;
+                Player.GetComponent<SpriteRenderer>().enabled = false;
+            } else
+            {
+                Debug.Log("You lose!");
+            }
+        }
     }
 }
