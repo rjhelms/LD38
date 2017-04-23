@@ -6,6 +6,7 @@ TagManager:
   tags:
   - EnemyParticle
   - ProjectileParent
+  - Powerup
   layers:
   - Default
   - TransparentFX

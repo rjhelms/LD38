@@ -25,6 +25,7 @@ public class GameController : MonoBehaviour {
     public AudioClip JumpSound;
     public AudioClip SneezeSound;
     public AudioClip PoopSound;
+    public AudioClip PowerupSound;
 
     public Image HealthImage;
     public int HealthImageScaleFactor = 32;
@@ -163,5 +164,18 @@ public class GameController : MonoBehaviour {
     public void PlayPoop()
     {
         AudioPlayer.PlayOneShot(PoopSound);
+    }
+
+    public void Powerup()
+    {
+        if (State == GameState.RUNNING)
+        {
+            AudioPlayer.PlayOneShot(PowerupSound);
+            if (ScoreManager.Instance.HitPoints < ScoreManager.Instance.MaxHitPoints)
+            {
+                ScoreManager.Instance.HitPoints++;
+
+            }
+        }
     }
 }
