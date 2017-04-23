@@ -89,12 +89,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3bfcda7944208c4182b3d7cf96e19d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveForce: 100
-  JumpForce: 250
-  PlayerRadius: 40
-  GroundLayerMask:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!212 &212611452693039796
 SpriteRenderer:
   m_ObjectHideFlags: 1

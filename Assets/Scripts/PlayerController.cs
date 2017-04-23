@@ -5,16 +5,14 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-    public float MoveForce = 1f;
-    public float JumpForce = 1f;
-    public float PlayerRadius = 16f;
-    public LayerMask GroundLayerMask;
+
 
     // Use this for initialization
     void Awake()
     {
         // register ourselves with the camera controller
         FindObjectOfType<CameraController>().RegisterPlayer(GetComponent<Rigidbody2D>());
+        FindObjectOfType<GameController>().RegisterPlayer(GetComponent<Rigidbody2D>());
     }
 
     // Update is called once per frame
@@ -23,23 +21,4 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void FixedUpdate()
-    {
-        Collider2D grounded = Physics2D.OverlapCircle(transform.position, PlayerRadius, GroundLayerMask);
-        GetComponent<Rigidbody2D>().AddForce(new Vector2(Input.GetAxis("Horizontal") * MoveForce, 0));
-
-        if (grounded)
-        {
-
-            if (Input.GetButton("Fire1"))
-            {
-                Debug.Log("Jumping!");
-                GetComponent<Rigidbody2D>().velocity += new Vector2(0, JumpForce);
-            }
-            else
-            {
-                Debug.Log("Can't jump");
-            }
-        }
-    }
 }
