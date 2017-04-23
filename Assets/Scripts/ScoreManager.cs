@@ -9,7 +9,7 @@ public class ScoreManager : Singleton<ScoreManager>
     public int Lives = 3;
     public int Level = 1;
     public int HitPoints = 3;
-
+    public int MaxHitPoints = 3;
     public void Reset()
     {
         Lives = 3;

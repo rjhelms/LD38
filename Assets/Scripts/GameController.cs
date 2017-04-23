@@ -19,6 +19,8 @@ public class GameController : MonoBehaviour {
     public float HitFlashTime = 0.2f;
 
     public AudioClip LevelClearSound;
+    public AudioClip LevelLoseSound;
+    public AudioClip HitSound;
 
     private float nextFlashTime;
     private float endRecoverTime;
@@ -50,6 +52,10 @@ public class GameController : MonoBehaviour {
         }
         if (State == GameState.RUNNING)
         {
+            if (Player.transform.position.y < -32)
+            {
+                Lose();
+            }
             Collider2D grounded = Physics2D.OverlapCircle(Player.transform.position, PlayerRadius, GroundLayerMask);
             Player.AddForce(new Vector2(Input.GetAxis("Horizontal") * MoveForce, 0));
 
@@ -65,6 +71,15 @@ public class GameController : MonoBehaviour {
             Player.AddForce(new Vector2(MoveForce * 3, 0));
             if (!AudioPlayer.isPlaying)
             {
+                ScoreManager.Instance.Level++;
+                UnityEngine.SceneManagement.SceneManager.LoadScene("main");
+            }
+        } else if (State == GameState.LOSE)
+        {
+            if (!AudioPlayer.isPlaying)
+            {
+                ScoreManager.Instance.Lives--;
+                ScoreManager.Instance.HitPoints = ScoreManager.Instance.MaxHitPoints;
                 UnityEngine.SceneManagement.SceneManager.LoadScene("main");
             }
         }
@@ -82,9 +97,16 @@ public class GameController : MonoBehaviour {
         AudioPlayer.PlayOneShot(LevelClearSound);
     }
 
+    public void Lose()
+    {
+        Debug.Log("You lose!");
+        AudioPlayer.PlayOneShot(LevelLoseSound);
+        State = GameState.LOSE;
+    }
+
     public void Hit()
     {
-        if (!HitRecovery)
+        if ((State == GameState.RUNNING) & !HitRecovery)
         {
             ScoreManager.Instance.HitPoints--;
             if (ScoreManager.Instance.HitPoints >= 0)
@@ -94,10 +116,10 @@ public class GameController : MonoBehaviour {
                 nextFlashTime = Time.fixedTime + HitFlashTime;
                 endRecoverTime = Time.fixedTime + HitRecoverTime;
                 Player.GetComponent<SpriteRenderer>().enabled = false;
+                AudioPlayer.PlayOneShot(HitSound);
             } else
             {
-                Debug.Log("You lose!");
-                ScoreManager.Instance.Lives -= 1;
+                Lose();
             }
         }
     }
