@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 20ff098366b804d43b113c41ac6378f1
-timeCreated: 1492906885
+timeCreated: 1492910403
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -84,8 +84,8 @@ TextureImporter:
       name: LevelEntities_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 448
+        x: 2
+        y: 478
         width: 64
         height: 64
       alignment: 0
@@ -97,8 +97,8 @@ TextureImporter:
       name: LevelEntities_1
       rect:
         serializedVersion: 2
-        x: 64
-        y: 448
+        x: 70
+        y: 478
         width: 64
         height: 64
       alignment: 0
@@ -110,8 +110,8 @@ TextureImporter:
       name: LevelEntities_2
       rect:
         serializedVersion: 2
-        x: 128
-        y: 448
+        x: 138
+        y: 478
         width: 64
         height: 64
       alignment: 0
