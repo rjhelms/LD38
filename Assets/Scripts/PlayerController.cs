@@ -28,6 +28,10 @@ public class PlayerController : MonoBehaviour
         if (collision.tag == "Finish")
         {
             gameController.Win();
+        } else if (collision.tag == "Powerup")
+        {
+            gameController.Powerup();
+            Destroy(collision.gameObject);
         }
     }
 
