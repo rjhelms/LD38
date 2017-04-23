@@ -13,7 +13,6 @@ public class GameController : MonoBehaviour {
     public float PlayerRadius = 40f;
     public LayerMask GroundLayerMask;
     public GameState State;
-    public int HitPoints = 3;
     public bool HitRecovery = false;
     public float HitRecoverTime = 1f;
     public float HitFlashTime = 0.2f;
@@ -79,10 +78,10 @@ public class GameController : MonoBehaviour {
     {
         if (!HitRecovery)
         {
-            HitPoints--;
-            if (HitPoints >= 0)
+            ScoreManager.Instance.HitPoints--;
+            if (ScoreManager.Instance.HitPoints >= 0)
             {
-                Debug.Log(string.Format("Ouch! {0} hit points left", HitPoints));
+                Debug.Log(string.Format("Ouch! {0} hit points left", ScoreManager.Instance.HitPoints));
                 HitRecovery = true;
                 nextFlashTime = Time.fixedTime + HitFlashTime;
                 endRecoverTime = Time.fixedTime + HitRecoverTime;
@@ -90,6 +89,7 @@ public class GameController : MonoBehaviour {
             } else
             {
                 Debug.Log("You lose!");
+                ScoreManager.Instance.Lives -= 1;
             }
         }
     }
