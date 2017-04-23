@@ -52,9 +52,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        if (other.tag == "Pollen")
+        if (other.tag == "EnemyParticle")
         {
-            Debug.Log("Hit by pollen!");
+            Debug.Log("Hit by EnemyParticle!");
             gameController.Hit();
         }
     }

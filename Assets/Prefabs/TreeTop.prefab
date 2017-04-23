@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 199645337943751222}
   m_Layer: 0
   m_Name: Pollen
-  m_TagString: Pollen
+  m_TagString: EnemyParticle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
