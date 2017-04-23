@@ -35,7 +35,7 @@ public class Bird : MonoBehaviour {
     {
         if (gameController.State == GameController.GameState.RUNNING)
         {
-            rigidBody.AddRelativeForce(Vector2.Scale(FlyForceVector, transform.localScale));
+            rigidBody.velocity = Vector2.Scale(FlyForceVector, transform.localScale);
             if (Time.fixedTime > nextTurnAround)
             {
                 transform.localScale = Vector2.Scale(transform.localScale, new Vector2(-1, 1));
