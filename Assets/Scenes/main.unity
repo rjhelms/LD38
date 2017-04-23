@@ -393,7 +393,7 @@ MonoBehaviour:
   AudioPlayer: {fileID: 752312143}
   Player: {fileID: 0}
   MoveForce: 125
-  JumpForce: 300
+  JumpForce: 350
   PlayerRadius: 40
   GroundLayerMask:
     serializedVersion: 2

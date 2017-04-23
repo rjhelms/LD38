@@ -5,14 +5,16 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private GameController gameController;
+    private Rigidbody2D myRigidbody;
     
     // Use this for initialization
     void Awake()
     {
         // register ourselves with the camera controller
-        FindObjectOfType<CameraController>().RegisterPlayer(GetComponent<Rigidbody2D>());
+        myRigidbody = GetComponent<Rigidbody2D>();
+        FindObjectOfType<CameraController>().RegisterPlayer(myRigidbody);
         gameController = FindObjectOfType<GameController>();
-        gameController.RegisterPlayer(GetComponent<Rigidbody2D>());
+        gameController.RegisterPlayer(myRigidbody);
     }
 
     // Update is called once per frame
@@ -26,6 +28,25 @@ public class PlayerController : MonoBehaviour
         if (collision.tag == "Finish")
         {
             gameController.Win();
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Terrain"))
+        {
+            bool falling = false;
+            foreach (ContactPoint2D contact in collision.contacts)
+            {
+                if (contact.point.y < transform.position.y)
+                {
+                    falling = true;
+                }
+            }
+            if (falling)
+            {
+                gameController.PlayerGrounded = true;
+            }
         }
     }
 

@@ -18,6 +18,8 @@ public class GameController : MonoBehaviour {
     public float HitRecoverTime = 1f;
     public float HitFlashTime = 0.2f;
 
+    public bool PlayerGrounded;
+
     public AudioClip LevelClearSound;
     public AudioClip LevelLoseSound;
     public AudioClip HitSound;
@@ -62,14 +64,19 @@ public class GameController : MonoBehaviour {
             {
                 Lose();
             }
-            Collider2D grounded = Physics2D.OverlapCircle(Player.transform.position, PlayerRadius, GroundLayerMask);
+
             Player.AddForce(new Vector2(Input.GetAxis("Horizontal") * MoveForce, 0));
 
-            if (grounded)
+            if (PlayerGrounded)
             {
                 if (Input.GetButton("Fire1"))
                 {
-                    Player.velocity += new Vector2(0, JumpForce);
+                    Collider2D grounded = Physics2D.OverlapCircle(Player.transform.position, PlayerRadius, GroundLayerMask);
+                    if (grounded)
+                    {
+                        PlayerGrounded = false;
+                        Player.velocity += new Vector2(0, JumpForce);
+                    }
                 }
             }
         } else if (State == GameState.WIN)
