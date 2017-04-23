@@ -10,6 +10,7 @@ public class ScoreManager : Singleton<ScoreManager>
     public int Level = 1;
     public int HitPoints = 3;
     public int DefaultHitPoints = 3;
+    public int MaxHitPoints = 5;
 
     public void Reset()
     {
