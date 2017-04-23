@@ -550,7 +550,7 @@ ParticleSystem:
     boxY: 1
     boxZ: 1
     radius:
-      value: 22
+      value: 20
       mode: 0
       spread: 0
       speed:
