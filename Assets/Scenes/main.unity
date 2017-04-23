@@ -211,7 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
-  ForecastMultiplier: 1
+  ForecastMultiplier: 0.8
   LerpFactor: 0.1
   TargetY: 320
   TargetZ: -10
