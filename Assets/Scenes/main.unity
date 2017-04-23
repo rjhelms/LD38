@@ -271,7 +271,7 @@ GameObject:
   - component: {fileID: 1843067592}
   - component: {fileID: 1843067591}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: LevelLoader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -288,6 +288,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 891adea6f1f785c45a00c05aab7991a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LevelPrefabs:
+  - {fileID: 1429003032681330, guid: 1bb22fc36d2c42847aebde5187a0d53e, type: 2}
+  - {fileID: 1174980660429430, guid: 5808585bbc1d4de4caabf9789515aca7, type: 2}
+  - {fileID: 1753780011987534, guid: a35fcff9c4f8bac45afc0711ab7e4f35, type: 2}
+  - {fileID: 1350375895349494, guid: 452b84b044751f34b99a26859c850432, type: 2}
+  - {fileID: 1738172739999112, guid: 99406edf8b15bad43af2f71c93d7b4ae, type: 2}
+  - {fileID: 1055818435394522, guid: 7ffe6803ef8eae24cb87ba9da0cc5f32, type: 2}
+  - {fileID: 1307578107625658, guid: 0c8ee1e5dd931f8409b51ba067eb0ad6, type: 2}
+  - {fileID: 1449474821326766, guid: 80e1a253413728047a0212dcc0a9f7e8, type: 2}
+  - {fileID: 1111564376064140, guid: 7c26772c939ae2040987c967fda6886b, type: 2}
+  - {fileID: 1181768719545070, guid: bf0dd3add5916294eb8cdbe49fd9dc7a, type: 2}
+  - {fileID: 1123991253472230, guid: 72576267744a64b44bc89226de301a4b, type: 2}
+  - {fileID: 1421791030322252, guid: fd41e2724c46cb24fb15d88cd26cfdb7, type: 2}
 --- !u!4 &1843067592
 Transform:
   m_ObjectHideFlags: 0

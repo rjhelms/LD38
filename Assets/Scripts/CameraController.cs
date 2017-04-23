@@ -22,4 +22,10 @@ public class CameraController : MonoBehaviour {
         x_position = Mathf.Lerp(transform.position.x, x_position, LerpFactor);
         transform.position = new Vector3(x_position, TargetY, TargetZ);
 	}
+
+    public void RegisterPlayer(Rigidbody2D player)
+    {
+        Player = player;
+        transform.position = new Vector3(Player.transform.position.x, TargetY, TargetZ);
+    }
 }

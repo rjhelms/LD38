@@ -11,9 +11,10 @@ public class PlayerController : MonoBehaviour
     public LayerMask GroundLayerMask;
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
-
+        // register ourselves with the camera controller
+        FindObjectOfType<CameraController>().RegisterPlayer(GetComponent<Rigidbody2D>());
     }
 
     // Update is called once per frame
