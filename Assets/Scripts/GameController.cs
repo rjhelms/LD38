@@ -26,15 +26,21 @@ public class GameController : MonoBehaviour {
 
     void FixedUpdate()
     {
-        Collider2D grounded = Physics2D.OverlapCircle(Player.transform.position, PlayerRadius, GroundLayerMask);
-        Player.AddForce(new Vector2(Input.GetAxis("Horizontal") * MoveForce, 0));
-
-        if (grounded)
+        if (State == GameState.RUNNING)
         {
-            if (Input.GetButton("Fire1"))
+            Collider2D grounded = Physics2D.OverlapCircle(Player.transform.position, PlayerRadius, GroundLayerMask);
+            Player.AddForce(new Vector2(Input.GetAxis("Horizontal") * MoveForce, 0));
+
+            if (grounded)
             {
-                Player.velocity += new Vector2(0, JumpForce);
+                if (Input.GetButton("Fire1"))
+                {
+                    Player.velocity += new Vector2(0, JumpForce);
+                }
             }
+        } else if (State == GameState.WIN)
+        {
+            Player.AddForce(new Vector2(MoveForce * 3, 0));
         }
     }
 
@@ -45,6 +51,7 @@ public class GameController : MonoBehaviour {
 
     public void Win()
     {
+        State = GameState.WIN;
         Debug.Log("You win!");
     }
 }

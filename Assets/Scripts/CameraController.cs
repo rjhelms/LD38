@@ -10,17 +10,22 @@ public class CameraController : MonoBehaviour {
     public float TargetY = 96;
     public float TargetZ = -10;
 
+    private GameController gameController;
+
 	// Use this for initialization
 	void Start () {
-		
-	}
+        gameController = FindObjectOfType<GameController>();
+    }
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        float x_position = Player.transform.position.x;
-        x_position += Player.velocity.x * ForecastMultiplier;
-        x_position = Mathf.Lerp(transform.position.x, x_position, LerpFactor);
-        transform.position = new Vector3(x_position, TargetY, TargetZ);
+        if (gameController.State == GameController.GameState.RUNNING)
+        {
+            float x_position = Player.transform.position.x;
+            x_position += Player.velocity.x * ForecastMultiplier;
+            x_position = Mathf.Lerp(transform.position.x, x_position, LerpFactor);
+            transform.position = new Vector3(x_position, TargetY, TargetZ);
+        }
 	}
 
     public void RegisterPlayer(Rigidbody2D player)
