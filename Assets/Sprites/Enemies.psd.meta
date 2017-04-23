@@ -1,11 +1,12 @@
 fileFormatVersion: 2
 guid: 3cd4408f6b8e00f49b378a360e5c9b53
-timeCreated: 1492969836
+timeCreated: 1492977581
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: Enemies_0
     21300002: Enemies_1
+    21300004: Enemies_2
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -97,6 +98,19 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 70
+        y: 398
+        width: 64
+        height: 128
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Enemies_2
+      rect:
+        serializedVersion: 2
+        x: 138
         y: 398
         width: 64
         height: 128
