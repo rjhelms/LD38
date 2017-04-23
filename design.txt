@@ -1,0 +1,15 @@
+bubble boy
+
+side scrolling platformer
+	rolling and bouncing
+	generally defenceless
+	
+trying to navigate across levels - ideally fast paced!
+
+lots of blind leaps
+
+enemies:
+	terrain
+	falling objects
+	trees, pollen
+	people sneezing
