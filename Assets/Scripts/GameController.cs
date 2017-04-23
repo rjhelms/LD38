@@ -26,6 +26,7 @@ public class GameController : MonoBehaviour {
     public AudioClip SneezeSound;
     public AudioClip PoopSound;
     public AudioClip PowerupSound;
+    public AudioClip OneUpSound;
 
     public Image HealthImage;
     public int HealthImageScaleFactor = 32;
@@ -49,6 +50,7 @@ public class GameController : MonoBehaviour {
         {
             ScoreManager.Instance.Lives++;
             ScoreManager.Instance.NextNewLifeScore *= 2;
+            AudioPlayer.PlayOneShot(OneUpSound);
         }
 
         ScoreText.text = ScoreManager.Instance.Score.ToString();

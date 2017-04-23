@@ -486,6 +486,7 @@ MonoBehaviour:
   SneezeSound: {fileID: 8300000, guid: ee43255da5bebe940ac10ad1e12506ae, type: 3}
   PoopSound: {fileID: 8300000, guid: cd17ec86075df0848bca36fe3b8555a3, type: 3}
   PowerupSound: {fileID: 8300000, guid: 87cd9bad27c16114fb8d1458351acdb9, type: 3}
+  OneUpSound: {fileID: 8300000, guid: b1e662445b960f141971888a2c1a28e4, type: 3}
   HealthImage: {fileID: 725695638}
   HealthImageScaleFactor: 32
   ScoreText: {fileID: 986630121}
