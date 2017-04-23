@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 599598932}
   - component: {fileID: 599598931}
   m_Layer: 5
-  m_Name: Text
+  m_Name: LevelLivesText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -485,9 +485,12 @@ MonoBehaviour:
   JumpSound: {fileID: 8300000, guid: dc92b9912142d4e4798ab18c04b2aa02, type: 3}
   SneezeSound: {fileID: 8300000, guid: ee43255da5bebe940ac10ad1e12506ae, type: 3}
   PoopSound: {fileID: 8300000, guid: cd17ec86075df0848bca36fe3b8555a3, type: 3}
+  PowerupSound: {fileID: 8300000, guid: 87cd9bad27c16114fb8d1458351acdb9, type: 3}
   HealthImage: {fileID: 725695638}
   HealthImageScaleFactor: 32
   ScoreText: {fileID: 599598931}
+  LevelClearScore: 2000
+  PowerupScore: 500
 --- !u!4 &890754759
 Transform:
   m_ObjectHideFlags: 0
@@ -762,6 +765,7 @@ MonoBehaviour:
   - {fileID: 1194937719023452, guid: 9ae8a323c5c591f4a91325329363eb2c, type: 2}
   - {fileID: 1473584393636580, guid: f22796204b1bf6249bf7106f7c88436a, type: 2}
   - {fileID: 1405898619589220, guid: 8c57f107b0847c14c80162495af7a667, type: 2}
+  - {fileID: 1300643654532236, guid: dc48dc4dffb05fe42a30b8a2d54ace4b, type: 2}
   GridSize: 64
   LevelDefinitions:
   - {fileID: 4900000, guid: 7696a4f2e4736e4488fd97fc37dfc50f, type: 3}
