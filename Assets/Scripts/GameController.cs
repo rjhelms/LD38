@@ -30,6 +30,10 @@ public class GameController : MonoBehaviour {
     public Image HealthImage;
     public int HealthImageScaleFactor = 32;
     public Text ScoreText;
+    public Text LivesLevelText;
+
+    public int LevelClearScore = 2000;
+    public int PowerupScore = 500;
 
     private float nextFlashTime;
     private float endRecoverTime;
@@ -41,10 +45,18 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (ScoreManager.Instance.Score > ScoreManager.Instance.NextNewLifeScore)
+        {
+            ScoreManager.Instance.Lives++;
+            ScoreManager.Instance.NextNewLifeScore *= 2;
+        }
+
+        ScoreText.text = ScoreManager.Instance.Score.ToString();
+
 		if (State == GameState.RUNNING)
         {
             HealthImage.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, ScoreManager.Instance.HitPoints * HealthImageScaleFactor);
-            ScoreText.text = string.Format("LIVES: {0}\r\nLEVEL: {1}", ScoreManager.Instance.Lives, ScoreManager.Instance.Level);
+            LivesLevelText.text = string.Format("LIVES: {0}\r\nLEVEL: {1}", ScoreManager.Instance.Lives, ScoreManager.Instance.Level);
         }
 	}
 
@@ -123,6 +135,7 @@ public class GameController : MonoBehaviour {
             State = GameState.WIN;
             Debug.Log("You win!");
             AudioPlayer.PlayOneShot(LevelClearSound);
+            ScoreManager.Instance.Score += LevelClearScore;
         }
     }
 
@@ -171,6 +184,7 @@ public class GameController : MonoBehaviour {
         if (State == GameState.RUNNING)
         {
             AudioPlayer.PlayOneShot(PowerupSound);
+            ScoreManager.Instance.Score += PowerupScore;
             if (ScoreManager.Instance.HitPoints < ScoreManager.Instance.MaxHitPoints)
             {
                 ScoreManager.Instance.HitPoints++;

@@ -11,11 +11,16 @@ public class ScoreManager : Singleton<ScoreManager>
     public int HitPoints = 3;
     public int DefaultHitPoints = 3;
     public int MaxHitPoints = 5;
+    public int Score = 0;
 
+    public int NewLifeScore = 5000;
+    public int NextNewLifeScore = 5000;
     public void Reset()
     {
         Lives = 3;
         Level = 1;
         HitPoints = 3;
+        Score = 0;
+        NewLifeScore = 5000;
     }
 }
