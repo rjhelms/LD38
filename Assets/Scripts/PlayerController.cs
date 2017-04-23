@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetButton("Fire1"))
             {
                 Debug.Log("Jumping!");
-                GetComponent<Rigidbody2D>().AddForce(new Vector2(0, JumpForce), ForceMode2D.Impulse);
+                GetComponent<Rigidbody2D>().velocity += new Vector2(0, JumpForce);
             }
             else
             {
