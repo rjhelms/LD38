@@ -7,15 +7,25 @@ public class SneezyGuy : MonoBehaviour {
     public ParticleSystem SneezeEmitter;
     public float SneezeCheckTime;
     public float SneezeChance;
-
+    public float SneezePauseTime;
+    public Vector2 WalkVector;
+    public LayerMask GroundLayerMask;
+    public LayerMask ObstacleLayerMask;
+    public Vector2 LookDownVector = new Vector2(64, -64);
+    public Vector2 LookAheadVector = new Vector2(64, 0);
+    public float LookAheadDistance = 64f;
     private GameController gameController;
     private SpriteRenderer spriteRenderer;
+    private Rigidbody2D rigidBody;
     private float nextSneezeCheckTime;
-
+    private float walkSuspendTime = 0;
+    private Collider2D myCollider;
 	// Use this for initialization
 	void Start () {
         gameController = FindObjectOfType<GameController>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        rigidBody = GetComponent<Rigidbody2D>();
+        myCollider = GetComponent<Collider2D>();
         nextSneezeCheckTime = Time.fixedTime + SneezeCheckTime;
 	}
 	
@@ -28,18 +38,64 @@ public class SneezyGuy : MonoBehaviour {
     {
         if (gameController.State == GameController.GameState.RUNNING)
         {
-            if (Time.fixedTime > nextSneezeCheckTime)
+            if (Time.fixedTime > walkSuspendTime)
             {
-                nextSneezeCheckTime = Time.fixedTime + SneezeCheckTime;
-                float willSneeze = Random.Range(0f, 1f);
-                if (willSneeze <= SneezeChance)
+                bool turnAround = false;
+
+                // check if there is ground ahead/below
+                bool ground_ahead = false;
+                RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, Vector2.Scale(LookDownVector, transform.localScale), LookAheadDistance, GroundLayerMask);
+                Debug.DrawRay(transform.position, Vector2.Scale(LookDownVector, transform.localScale));
+                foreach (RaycastHit2D hit in hits)
                 {
-                    Debug.Log(willSneeze);
-                    Debug.Log("Achoo!");
-                    SneezeEmitter.Play();
-                    if (spriteRenderer.isVisible)
+                    Debug.Log(hit.collider.gameObject);
+                    if (hit.collider != myCollider)
                     {
-                        gameController.PlaySneeze();
+                        ground_ahead = true;
+                    }
+                }
+                if (!ground_ahead)
+                {
+                    Debug.Log("No ground ahead, turning around.");
+                    turnAround = true;
+                }
+
+                // check if there is an obstacle in front
+                hits = Physics2D.RaycastAll(transform.position, Vector2.Scale(LookAheadVector, transform.localScale), LookAheadDistance, ObstacleLayerMask);
+                Debug.DrawRay(transform.position, Vector2.Scale(LookAheadVector, transform.localScale));
+                foreach (RaycastHit2D hit in hits)
+                {
+                    if (hit.collider != myCollider)
+                    {
+                        Debug.Log("Obstacle ahead, turning around.");
+                        turnAround = true;
+                    }
+                }
+
+                if (!turnAround)
+                {
+                    rigidBody.AddForce(Vector2.Scale(WalkVector, transform.localScale));
+                } else
+                {
+                    transform.localScale = Vector2.Scale(transform.localScale, new Vector2(-1, 1));
+                    rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
+                }
+
+                if (Time.fixedTime > nextSneezeCheckTime)
+                {
+                    nextSneezeCheckTime = Time.fixedTime + SneezeCheckTime;
+                    float willSneeze = Random.Range(0f, 1f);
+                    if (willSneeze <= SneezeChance)
+                    {
+                        rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
+                        walkSuspendTime = Time.fixedTime + SneezePauseTime;
+                        Debug.Log(willSneeze);
+                        Debug.Log("Achoo!");
+                        SneezeEmitter.Play();
+                        if (spriteRenderer.isVisible)
+                        {
+                            gameController.PlaySneeze();
+                        }
                     }
                 }
             }

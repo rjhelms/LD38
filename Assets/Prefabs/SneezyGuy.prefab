@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 50777017284155114}
   - component: {fileID: 70067466755109612}
   - component: {fileID: 114265897598019866}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SneezyGuy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0
   m_GravityScale: 32
   m_Material: {fileID: 0}
@@ -123,6 +123,17 @@ MonoBehaviour:
   SneezeEmitter: {fileID: 198147024189676174}
   SneezeCheckTime: 1
   SneezeChance: 0.2
+  SneezePauseTime: 1
+  WalkVector: {x: 150, y: 0}
+  GroundLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  ObstacleLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  LookDownVector: {x: 48, y: -48}
+  LookAheadVector: {x: 48, y: 0}
+  LookAheadDistance: 48
 --- !u!198 &198147024189676174
 ParticleSystem:
   m_ObjectHideFlags: 1
