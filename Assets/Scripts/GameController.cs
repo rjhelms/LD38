@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 
@@ -22,6 +22,9 @@ public class GameController : MonoBehaviour {
     public AudioClip LevelLoseSound;
     public AudioClip HitSound;
 
+    public Image HealthImage;
+    public int HealthImageScaleFactor = 32;
+
     private float nextFlashTime;
     private float endRecoverTime;
 
@@ -32,7 +35,10 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (State == GameState.RUNNING)
+        {
+            HealthImage.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, ScoreManager.Instance.HitPoints * HealthImageScaleFactor);
+        }
 	}
 
     void FixedUpdate()
