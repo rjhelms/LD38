@@ -96,7 +96,7 @@ public class GameController : MonoBehaviour {
                 ScoreManager.Instance.Lives--;
                 if (ScoreManager.Instance.Lives >= 0)
                 {
-                    ScoreManager.Instance.HitPoints = ScoreManager.Instance.MaxHitPoints;
+                    ScoreManager.Instance.HitPoints = ScoreManager.Instance.DefaultHitPoints;
                     UnityEngine.SceneManagement.SceneManager.LoadScene("main");
                 } else
                 {
