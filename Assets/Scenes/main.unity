@@ -468,7 +468,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AudioPlayer: {fileID: 752312143}
   Player: {fileID: 0}
-  MoveForce: 150
+  MoveForce: 175
   JumpForce: 450
   PlayerRadius: 40
   GroundLayerMask:
