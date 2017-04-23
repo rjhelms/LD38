@@ -14,6 +14,7 @@ public class Bird : MonoBehaviour {
 
     private GameController gameController;
     private Rigidbody2D rigidBody;
+    private SpriteRenderer spriteRenderer;
     private float nextPoop;
     private float nextTurnAround;
     private Transform projectileParent;
@@ -21,6 +22,7 @@ public class Bird : MonoBehaviour {
     void Start () {
         gameController = FindObjectOfType<GameController>();
         rigidBody = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         projectileParent = GameObject.FindGameObjectWithTag("ProjectileParent").transform;
         nextPoop = Time.fixedTime + PoopCheckTime;
         nextTurnAround = Time.fixedTime + TurnAroundTime;
@@ -50,6 +52,10 @@ public class Bird : MonoBehaviour {
                 {
                     GameObject poop = Instantiate(PoopPrefab, PoopEmmiter.position, Quaternion.identity, projectileParent);
                     poop.GetComponent<Poop>().Parent = gameObject;
+                    if (spriteRenderer.isVisible)
+                    {
+                        gameController.PlayPoop();
+                    }
                 }
             }
         }

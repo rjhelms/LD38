@@ -408,6 +408,7 @@ MonoBehaviour:
   HitSound: {fileID: 8300000, guid: 450e792767739014895ff59c235432f3, type: 3}
   JumpSound: {fileID: 8300000, guid: dc92b9912142d4e4798ab18c04b2aa02, type: 3}
   SneezeSound: {fileID: 8300000, guid: ee43255da5bebe940ac10ad1e12506ae, type: 3}
+  PoopSound: {fileID: 8300000, guid: cd17ec86075df0848bca36fe3b8555a3, type: 3}
   HealthImage: {fileID: 725695638}
   HealthImageScaleFactor: 32
 --- !u!4 &890754759
