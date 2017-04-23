@@ -29,15 +29,12 @@ public class LevelLoader : MonoBehaviour {
         // start at 2 last line - last is just the blank at end
         for (int i = 2; i <= levelDef.Length; i++)
         {
-            Debug.Log(string.Format("{0}: {1}", i, levelDef[levelDef.Length - i]));
             string[] tiles = Regex.Split(levelDef[levelDef.Length - i], ",");
             for (int j = 0; j < tiles.Length; j++)
             { 
                 if (tiles[j] != string.Empty)
                 {
-   
                     int tile = int.Parse(tiles[j]);
-                    Debug.Log(string.Format("{0}, {1}: {2}", j, i, tile));
                     GameObject.Instantiate(LevelPrefabs[tile], new Vector3(j * GridSize, (i-2) * GridSize, 0), Quaternion.identity, ParentTransform);
                 }
 

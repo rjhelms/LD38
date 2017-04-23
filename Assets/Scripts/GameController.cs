@@ -31,15 +31,9 @@ public class GameController : MonoBehaviour {
 
         if (grounded)
         {
-
             if (Input.GetButton("Fire1"))
             {
-                Debug.Log("Jumping!");
                 Player.velocity += new Vector2(0, JumpForce);
-            }
-            else
-            {
-                Debug.Log("Can't jump");
             }
         }
     }
