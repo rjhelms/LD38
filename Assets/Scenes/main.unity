@@ -406,6 +406,7 @@ MonoBehaviour:
   LevelClearSound: {fileID: 8300000, guid: 0a0f60946af86c54d85b230ffd5e373a, type: 3}
   LevelLoseSound: {fileID: 8300000, guid: 53d62a4b3ece68a48a0d525b74a8b1ce, type: 3}
   HitSound: {fileID: 8300000, guid: 450e792767739014895ff59c235432f3, type: 3}
+  JumpSound: {fileID: 8300000, guid: dc92b9912142d4e4798ab18c04b2aa02, type: 3}
   HealthImage: {fileID: 725695638}
   HealthImageScaleFactor: 32
 --- !u!4 &890754759

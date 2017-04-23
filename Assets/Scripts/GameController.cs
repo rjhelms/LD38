@@ -23,6 +23,7 @@ public class GameController : MonoBehaviour {
     public AudioClip LevelClearSound;
     public AudioClip LevelLoseSound;
     public AudioClip HitSound;
+    public AudioClip JumpSound;
 
     public Image HealthImage;
     public int HealthImageScaleFactor = 32;
@@ -76,6 +77,7 @@ public class GameController : MonoBehaviour {
                     {
                         PlayerGrounded = false;
                         Player.velocity += new Vector2(0, JumpForce);
+                        AudioPlayer.PlayOneShot(JumpSound);
                     }
                 }
             }
