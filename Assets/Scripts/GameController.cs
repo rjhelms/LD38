@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour {
 
     public enum GameState { RUNNING, WIN, LOSE };
 
+    public AudioSource AudioPlayer;
     public Rigidbody2D Player;
     public float MoveForce = 125f;
     public float JumpForce = 300f;
@@ -16,6 +17,8 @@ public class GameController : MonoBehaviour {
     public bool HitRecovery = false;
     public float HitRecoverTime = 1f;
     public float HitFlashTime = 0.2f;
+
+    public AudioClip LevelClear;
 
     private float nextFlashTime;
     private float endRecoverTime;
@@ -60,6 +63,10 @@ public class GameController : MonoBehaviour {
         } else if (State == GameState.WIN)
         {
             Player.AddForce(new Vector2(MoveForce * 3, 0));
+            if (!AudioPlayer.isPlaying)
+            {
+                UnityEngine.SceneManagement.SceneManager.LoadScene("main");
+            }
         }
     }
 
@@ -72,6 +79,7 @@ public class GameController : MonoBehaviour {
     {
         State = GameState.WIN;
         Debug.Log("You win!");
+        AudioPlayer.PlayOneShot(LevelClear);
     }
 
     public void Hit()

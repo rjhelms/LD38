@@ -121,6 +121,7 @@ GameObject:
   - component: {fileID: 752312138}
   - component: {fileID: 752312137}
   - component: {fileID: 752312142}
+  - component: {fileID: 752312143}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -214,6 +215,86 @@ MonoBehaviour:
   LerpFactor: 0.1
   TargetY: 320
   TargetZ: -10
+--- !u!82 &752312143
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 752312136}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &890754757
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,6 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eb86d99d07b7434d9a18948fd79c0f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioPlayer: {fileID: 752312143}
   Player: {fileID: 0}
   MoveForce: 125
   JumpForce: 300
@@ -249,6 +331,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   State: 0
+  HitRecovery: 0
+  HitRecoverTime: 2
+  HitFlashTime: 0.1
+  LevelClear: {fileID: 8300000, guid: 0a0f60946af86c54d85b230ffd5e373a, type: 3}
 --- !u!4 &890754759
 Transform:
   m_ObjectHideFlags: 0
