@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
+    public GameController gameController;
 
 
     // Use this for initialization
@@ -12,7 +12,8 @@ public class PlayerController : MonoBehaviour
     {
         // register ourselves with the camera controller
         FindObjectOfType<CameraController>().RegisterPlayer(GetComponent<Rigidbody2D>());
-        FindObjectOfType<GameController>().RegisterPlayer(GetComponent<Rigidbody2D>());
+        gameController = FindObjectOfType<GameController>();
+        gameController.RegisterPlayer(GetComponent<Rigidbody2D>());
     }
 
     // Update is called once per frame
@@ -21,4 +22,11 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Finish")
+        {
+            gameController.Win();
+        }
+    } 
 }

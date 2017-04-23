@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class GameController : MonoBehaviour {
+
+    public enum GameState { RUNNING, WIN, LOSE };
 
     public Rigidbody2D Player;
     public float MoveForce = 125f;
     public float JumpForce = 300f;
     public float PlayerRadius = 40f;
     public LayerMask GroundLayerMask;
+    public GameState State;
 
     // Use this for initialization
     void Start () {
@@ -43,5 +47,10 @@ public class GameController : MonoBehaviour {
     public void RegisterPlayer(Rigidbody2D player)
     {
         Player = player;
+    }
+
+    public void Win()
+    {
+        Debug.Log("You win!");
     }
 }
