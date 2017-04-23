@@ -24,6 +24,7 @@ public class GameController : MonoBehaviour {
     public AudioClip LevelLoseSound;
     public AudioClip HitSound;
     public AudioClip JumpSound;
+    public AudioClip SneezeSound;
 
     public Image HealthImage;
     public int HealthImageScaleFactor = 32;
@@ -150,5 +151,10 @@ public class GameController : MonoBehaviour {
                 Lose();
             }
         }
+    }
+
+    public void PlaySneeze()
+    {
+        AudioPlayer.PlayOneShot(SneezeSound);
     }
 }

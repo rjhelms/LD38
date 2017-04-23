@@ -9,10 +9,13 @@ public class SneezyGuy : MonoBehaviour {
     public float SneezeChance;
 
     private GameController gameController;
+    private SpriteRenderer spriteRenderer;
     private float nextSneezeCheckTime;
+
 	// Use this for initialization
 	void Start () {
         gameController = FindObjectOfType<GameController>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         nextSneezeCheckTime = Time.fixedTime + SneezeCheckTime;
 	}
 	
@@ -34,6 +37,10 @@ public class SneezyGuy : MonoBehaviour {
                     Debug.Log(willSneeze);
                     Debug.Log("Achoo!");
                     SneezeEmitter.Play();
+                    if (spriteRenderer.isVisible)
+                    {
+                        gameController.PlaySneeze();
+                    }
                 }
             }
         }
