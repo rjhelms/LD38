@@ -27,5 +27,14 @@ public class PlayerController : MonoBehaviour
         {
             gameController.Win();
         }
-    } 
+    }
+
+    private void OnParticleCollision(GameObject other)
+    {
+        if (other.tag == "Pollen")
+        {
+            Debug.Log("Hit by pollen!");
+            gameController.Hit();
+        }
+    }
 }
