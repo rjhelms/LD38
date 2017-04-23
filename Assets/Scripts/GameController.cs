@@ -18,7 +18,7 @@ public class GameController : MonoBehaviour {
     public float HitRecoverTime = 1f;
     public float HitFlashTime = 0.2f;
 
-    public AudioClip LevelClear;
+    public AudioClip LevelClearSound;
 
     private float nextFlashTime;
     private float endRecoverTime;
@@ -79,7 +79,7 @@ public class GameController : MonoBehaviour {
     {
         State = GameState.WIN;
         Debug.Log("You win!");
-        AudioPlayer.PlayOneShot(LevelClear);
+        AudioPlayer.PlayOneShot(LevelClearSound);
     }
 
     public void Hit()
