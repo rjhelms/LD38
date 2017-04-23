@@ -144,12 +144,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99b86cb3b44600e43bd67f91e1be4163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlyForceVector: {x: 96, y: 0}
+  FlyForceVector: {x: 128, y: 0}
   PoopEmmiter: {fileID: 4673032335509394}
   PoopPrefab: {fileID: 1571379192687052, guid: 16706da4d839b1d40b5237da2d723951, type: 2}
-  PoopCheckTime: 2
+  PoopCheckTime: 1
   PoopChance: 0.2
-  TurnAroundTime: 5
+  TurnAroundTime: 4
 --- !u!212 &212422005310099034
 SpriteRenderer:
   m_ObjectHideFlags: 1
