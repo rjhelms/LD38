@@ -48,7 +48,8 @@ public class Bird : MonoBehaviour {
                 float willPoop = Random.Range(0f, 1f);
                 if (willPoop <= PoopChance)
                 {
-                    Instantiate(PoopPrefab, PoopEmmiter.position, Quaternion.identity, projectileParent);
+                    GameObject poop = Instantiate(PoopPrefab, PoopEmmiter.position, Quaternion.identity, projectileParent);
+                    poop.GetComponent<Poop>().Parent = gameObject;
                 }
             }
         }
