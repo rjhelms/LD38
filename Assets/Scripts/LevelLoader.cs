@@ -23,7 +23,6 @@ public class LevelLoader : MonoBehaviour {
     private void LoadLevel()
     {
         string[] levelDef = Regex.Split(LevelDefinitions[0].ToString(), "\r\n");
-        Debug.Log(levelDef);
 
         // read lines in reverse order
         // start at 2 last line - last is just the blank at end
