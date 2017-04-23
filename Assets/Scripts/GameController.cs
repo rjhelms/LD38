@@ -114,16 +114,22 @@ public class GameController : MonoBehaviour {
 
     public void Win()
     {
-        State = GameState.WIN;
-        Debug.Log("You win!");
-        AudioPlayer.PlayOneShot(LevelClearSound);
+        if (State == GameState.RUNNING)
+        {
+            State = GameState.WIN;
+            Debug.Log("You win!");
+            AudioPlayer.PlayOneShot(LevelClearSound);
+        }
     }
 
     public void Lose()
     {
-        Debug.Log("You lose!");
-        AudioPlayer.PlayOneShot(LevelLoseSound);
-        State = GameState.LOSE;
+        if (State == GameState.RUNNING)
+        {
+            Debug.Log("You lose!");
+            AudioPlayer.PlayOneShot(LevelLoseSound);
+            State = GameState.LOSE;
+        }
     }
 
     public void Hit()
