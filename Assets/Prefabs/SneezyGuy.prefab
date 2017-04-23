@@ -134,6 +134,12 @@ MonoBehaviour:
   LookDownVector: {x: 48, y: -48}
   LookAheadVector: {x: 48, y: 0}
   LookAheadDistance: 48
+  AnimationSprites:
+  - {fileID: 21300000, guid: 3cd4408f6b8e00f49b378a360e5c9b53, type: 3}
+  - {fileID: 21300002, guid: 3cd4408f6b8e00f49b378a360e5c9b53, type: 3}
+  currentSprite: 0
+  AnimationSpeed: 1.5
+  AnimationVelocityFactor: 0.25
 --- !u!198 &198147024189676174
 ParticleSystem:
   m_ObjectHideFlags: 1

@@ -14,12 +14,19 @@ public class SneezyGuy : MonoBehaviour {
     public Vector2 LookDownVector = new Vector2(64, -64);
     public Vector2 LookAheadVector = new Vector2(64, 0);
     public float LookAheadDistance = 64f;
+    public Sprite[] AnimationSprites;
+    public int currentSprite = 0;
+    public float AnimationSpeed;
+    public float AnimationVelocityFactor;
+
     private GameController gameController;
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rigidBody;
     private float nextSneezeCheckTime;
     private float walkSuspendTime = 0;
     private Collider2D myCollider;
+    private float currentFrameTime;
+
 	// Use this for initialization
 	void Start () {
         gameController = FindObjectOfType<GameController>();
@@ -97,6 +104,18 @@ public class SneezyGuy : MonoBehaviour {
                             gameController.PlaySneeze();
                         }
                     }
+                }
+
+                currentFrameTime += Time.fixedDeltaTime * Mathf.Abs(rigidBody.velocity.x) * AnimationVelocityFactor;
+                if (currentFrameTime > AnimationSpeed)
+                {
+                    currentFrameTime = 0;
+                    currentSprite++;
+                    if (currentSprite == AnimationSprites.Length)
+                    {
+                        currentSprite = 0;
+                    }
+                    spriteRenderer.sprite = AnimationSprites[currentSprite];
                 }
             }
         }
