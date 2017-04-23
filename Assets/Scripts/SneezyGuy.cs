@@ -52,10 +52,8 @@ public class SneezyGuy : MonoBehaviour {
                 // check if there is ground ahead/below
                 bool ground_ahead = false;
                 RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, Vector2.Scale(LookDownVector, transform.localScale), LookAheadDistance, GroundLayerMask);
-                Debug.DrawRay(transform.position, Vector2.Scale(LookDownVector, transform.localScale));
                 foreach (RaycastHit2D hit in hits)
                 {
-                    Debug.Log(hit.collider.gameObject);
                     if (hit.collider != myCollider)
                     {
                         ground_ahead = true;
@@ -63,18 +61,15 @@ public class SneezyGuy : MonoBehaviour {
                 }
                 if (!ground_ahead)
                 {
-                    Debug.Log("No ground ahead, turning around.");
                     turnAround = true;
                 }
 
                 // check if there is an obstacle in front
                 hits = Physics2D.RaycastAll(transform.position, Vector2.Scale(LookAheadVector, transform.localScale), LookAheadDistance, ObstacleLayerMask);
-                Debug.DrawRay(transform.position, Vector2.Scale(LookAheadVector, transform.localScale));
                 foreach (RaycastHit2D hit in hits)
                 {
                     if (hit.collider != myCollider)
                     {
-                        Debug.Log("Obstacle ahead, turning around.");
                         turnAround = true;
                     }
                 }
@@ -96,8 +91,6 @@ public class SneezyGuy : MonoBehaviour {
                     {
                         rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
                         walkSuspendTime = Time.fixedTime + SneezePauseTime;
-                        Debug.Log(willSneeze);
-                        Debug.Log("Achoo!");
                         SneezeEmitter.Play();
                         if (spriteRenderer.isVisible)
                         {
