@@ -124,7 +124,7 @@ MonoBehaviour:
   SneezeCheckTime: 1
   SneezeChance: 0.2
   SneezePauseTime: 1
-  WalkVector: {x: 275, y: 0}
+  WalkVector: {x: 300, y: 0}
   GroundLayerMask:
     serializedVersion: 2
     m_Bits: 256
