@@ -49,9 +49,13 @@ public class GameController : MonoBehaviour {
         // debug level advance
         if (Input.GetKeyDown(KeyCode.KeypadPlus))
         {
-            ScoreManager.Instance.Level++;
-            UnityEngine.SceneManagement.SceneManager.LoadScene("main");
+            Win();
         }
+        if (Input.GetKeyDown(KeyCode.KeypadMinus))
+        {
+            Lose();
+        }
+
         if (ScoreManager.Instance.Score > ScoreManager.Instance.NextNewLifeScore)
         {
             ScoreManager.Instance.Lives++;
@@ -117,7 +121,13 @@ public class GameController : MonoBehaviour {
             if (!AudioPlayer.isPlaying)
             {
                 ScoreManager.Instance.Level++;
-                UnityEngine.SceneManagement.SceneManager.LoadScene("main");
+                if (ScoreManager.Instance.Level <= 5)
+                {
+                    UnityEngine.SceneManagement.SceneManager.LoadScene("main");
+                } else
+                {
+                    UnityEngine.SceneManagement.SceneManager.LoadScene("win");
+                }
             }
         } else if (State == GameState.LOSE)
         {
@@ -130,8 +140,7 @@ public class GameController : MonoBehaviour {
                     UnityEngine.SceneManagement.SceneManager.LoadScene("main");
                 } else
                 {
-                    Debug.Log("Game over!");
-                    Time.timeScale = 0;
+                    UnityEngine.SceneManagement.SceneManager.LoadScene("lose");
                 }
             }
         }
@@ -160,6 +169,7 @@ public class GameController : MonoBehaviour {
             Debug.Log("You lose!");
             AudioPlayer.PlayOneShot(LevelLoseSound);
             State = GameState.LOSE;
+            Player.GetComponent<Collider2D>().enabled = false;
         }
     }
 
